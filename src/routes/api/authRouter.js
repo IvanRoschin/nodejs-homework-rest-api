@@ -6,6 +6,7 @@ const {
   joiRegisterSchema,
   joiLoginSchema,
   joiUpdateSubscriptionSchema,
+  joiVerifyEmailSchema,
 } = require("../../models");
 
 const { auth: ctrl } = require("../../controllers");
@@ -17,12 +18,13 @@ router.patch(
   ctrl.updateAvatarCloudinary
 );
 
-// router.patch(
-//   "/avatars",
-//   auth,
-//   upload.single("avatar"),
-//   asyncWrapper(ctrl.updateAvatar)
-// );
+router.get("/verify/:verificationToken", asyncWrapper(ctrl.verifyEmail));
+
+router.post(
+  "/verify",
+  validation(joiVerifyEmailSchema),
+  asyncWrapper(ctrl.resendVerifyEmail)
+);
 
 router.post(
   "/signup",
