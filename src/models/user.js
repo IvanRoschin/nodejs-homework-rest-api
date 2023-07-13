@@ -5,6 +5,11 @@ const bcrypt = require("bcryptjs");
 const emailRegexp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; // eslint-disable-line
 const userSchema = new Schema(
   {
+    name: {
+      type: String,
+      required: [true, "Password is required"],
+    },
+
     password: {
       type: String,
       required: [true, "Password is required"],
@@ -51,6 +56,7 @@ userSchema.methods.comparePassword = function (password) {
 };
 
 const joiRegisterSchema = Joi.object({
+  name: Joi.string(),
   password: Joi.string().min(3).max(10).required(),
   email: Joi.string().pattern(emailRegexp).required(),
   subscription: Joi.string().valid("starter", "pro", "business"),

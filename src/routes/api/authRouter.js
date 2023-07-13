@@ -18,6 +18,8 @@ router.patch(
   ctrl.updateAvatarCloudinary
 );
 
+router.get("/token", asyncWrapper(ctrl.getToken));
+
 router.get("/", asyncWrapper(ctrl.getAll));
 
 router.get("/verify/:verificationToken", asyncWrapper(ctrl.verifyEmail));
@@ -38,7 +40,7 @@ router.post("/login", validation(joiLoginSchema), asyncWrapper(ctrl.login));
 
 router.get("/current", auth, asyncWrapper(ctrl.getCurrent));
 
-router.get("/logout", auth, asyncWrapper(ctrl.logout));
+router.post("/logout", auth, asyncWrapper(ctrl.logout));
 
 router.patch(
   "/",

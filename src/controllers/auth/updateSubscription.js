@@ -17,7 +17,7 @@ const updateSubscription = async (req, res) => {
     }
   );
   if (!updatedSubscription) {
-    throw new NotFound(`Erro update Subscription user with email=${email}`);
+    throw new NotFound(`Error update Subscription user with email=${email}`);
   }
   res.status(200).json({
     data: {

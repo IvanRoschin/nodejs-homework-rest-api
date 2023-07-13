@@ -18,8 +18,8 @@ const contactSchema = new Schema(
     },
     phone: {
       type: String,
-      required: true,
-      unique: [true, "Phone must be unique"],
+      required: [true, "Set contact phone"],
+      // unique: [true, "Phone must be unique"],
     },
     favorite: {
       type: Boolean,
@@ -35,7 +35,7 @@ const contactSchema = new Schema(
 );
 
 const joiPostSchema = Joi.object({
-  name: Joi.string().min(3).max(20).required(),
+  name: Joi.string().min(2).max(20).required(),
   email: Joi.string().pattern(emailRegexp).required(),
   phone: Joi.string().min(3).max(20).required(),
   favorite: Joi.bool(),

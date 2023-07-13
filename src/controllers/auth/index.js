@@ -7,6 +7,7 @@ const { updateAvatarCloudinary } = require("./updateAvatarCloudinary");
 const { verifyEmail } = require("./verifyEmail");
 const { resendVerifyEmail } = require("./resendVerifyEmail");
 const { getAll } = require("./getAll");
+const { getToken } = require("./getToken");
 
 module.exports = {
   signup,
@@ -18,4 +19,5 @@ module.exports = {
   verifyEmail,
   resendVerifyEmail,
   getAll,
+  getToken,
 };
